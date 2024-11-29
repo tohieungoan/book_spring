@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Danh sách Sinh viên</title>
 </head>
 <body>
-$END$
+<h1>Danh sách Sinh viên</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Họ Tên</th>
+        <th>Email</th>
+        <th>Số điện thoại</th>
+        <th>CMND</th>
+        <th>Địa chỉ</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sinhVien : ${listSinhVien}">
+        <td th:text="${sinhVien.hoTen}">Tên sinh viên</td>
+        <td th:text="${sinhVien.email}">Email</td>
+        <td th:text="${sinhVien.soDT}">Số điện thoại</td>
+        <td th:text="${sinhVien.soCMND}">CMND</td>
+        <td th:text="${sinhVien.diaChi}">Địa chỉ</td>
+        <td>
+            <a th:href="@{/sinh-vien/so-cmnd/{soCMND}(soCMND=${sinhVien.soCMND})}">Chi tiết</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/sinh-vien/create">Tạo sinh viên mới</a>
 </body>
 </html>
