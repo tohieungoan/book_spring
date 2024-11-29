@@ -1,10 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Thông Tin Tốt Nghiệp</title>
+    <style>
+        /* Cải tiến giao diện */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+        }
+
+        .form-container label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+            color: #333;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        .form-container .required {
+            color: red;
+            font-size: 12px;
+            margin-top: -10px;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="form-container">
+    <h1>Thông Tin Tốt Nghiệp</h1>
+    <form th:action="@{/tot-nghiep/save}" th:object="${totNghiep}" method="post">
+        <!-- Thông tin tốt nghiệp -->
+        <label for="soCMND">Số CMND:</label>
+        <input type="text" id="soCMND" th:field="*{soCMND}" required>
+        <div class="required">* Bắt buộc</div>
+
+        <label for="heTN">Hệ Tốt Nghiệp:</label>
+        <input type="text" id="heTN" th:field="*{heTN}" required><br>
+
+        <label for="ngayTN">Ngày Tốt Nghiệp:</label>
+        <input type="date" id="ngayTN" th:field="*{ngayTN}" required><br>
+
+        <label for="loaiTN">Loại Tốt Nghiệp:</label>
+        <input type="text" id="loaiTN" th:field="*{loaiTN}" required><br>
+
+        <label for="maTruong">Mã Trường:</label>
+        <input type="text" id="maTruong" th:field="*{maTruong}" required><br>
+
+        <label for="maNganh">Mã Ngành:</label>
+        <input type="text" id="maNganh" th:field="*{maNganh}" required><br>
+
+        <button type="submit">Tiếp Tục</button>
+    </form>
+</div>
 </body>
 </html>

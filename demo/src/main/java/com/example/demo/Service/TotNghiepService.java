@@ -1,28 +1,55 @@
-package com.example.demo.Service;
-import com.example.demo.model.TotNghiep;
+package com.example.demo.service;
+
+import com.example.demo.models.CongViec;
+import com.example.demo.models.TotNghiep;
 import com.example.demo.repository.TotNghiepRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TotNghiepService {
+
     @Autowired
-    TotNghiepRepository totNghiepRepository;
-    public List<TotNghiep> findallTotNghiep() {
+    private TotNghiepRepository totNghiepRepository;
+
+    // Lưu thông tin tốt nghiệp
+    public TotNghiep save(TotNghiep totNghiep) {
+        return totNghiepRepository.save(totNghiep);
+    }
+
+    // Tìm kiếm thông tin tốt nghiệp theo số CMND của sinh viên
+    public List<TotNghiep> findBySinhVienSoCMND(String soCMND) {
+        return totNghiepRepository.findBySinhVien_SoCMND(soCMND);
+    }
+    public List<TotNghiep> getAllTotNghiep() {
         return totNghiepRepository.findAll();
     }
-    public void saveTotNghiep(TotNghiep totNghiep) {
-        totNghiepRepository.save(totNghiep);
+
+    // Tìm kiếm theo loại tốt nghiệp
+    public List<TotNghiep> findByLoaiTN(String loaiTN) {
+        return totNghiepRepository.findByLoaiTN(loaiTN);
     }
-    public TotNghiep findTotNghiepBySoCMND(String soCMND) {
-        return totNghiepRepository.findBySoCMND(soCMND);
+
+    // Tìm kiếm theo hệ tốt nghiệp và mã ngành
+    public List<TotNghiep> findByHeTNAndMaNganh(String heTN, String maNganh) {
+        return totNghiepRepository.findByHeTNAndMaNganh(heTN, maNganh);
     }
-    public TotNghiep findTotNghiepByMaTruong(String MaTruong){
-        return totNghiepRepository.findByMaTruong(MaTruong);
+
+    // Tìm kiếm theo mã trường
+    public List<TotNghiep> findByMaTruong(String maTruong) {
+        return totNghiepRepository.findByMaTruong(maTruong);
     }
-    public TotNghiep findTotNghiepByMaNganh(String MaNganh){
-        return totNghiepRepository.findByMaNganh(MaNganh);
+
+    // Tìm kiếm thông tin tốt nghiệp theo ID
+    public Optional<TotNghiep> findById(Long id) {
+        return totNghiepRepository.findById(id);
+    }
+
+    // Xóa thông tin tốt nghiệp theo ID
+    public void deleteById(Long id) {
+        totNghiepRepository.deleteById(id);
     }
 }

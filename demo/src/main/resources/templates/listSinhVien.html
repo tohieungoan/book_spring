@@ -3,10 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <title>Danh sách Sinh viên</title>
+    <style>
+        /* Cải tiến giao diện */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .button-container a:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
 </head>
 <body>
 <h1>Danh sách Sinh viên</h1>
-<table border="1">
+<table>
     <thead>
     <tr>
         <th>Họ Tên</th>
@@ -30,6 +103,12 @@
     </tr>
     </tbody>
 </table>
-<a href="/sinh-vien/create">Tạo sinh viên mới</a>
+
+<!-- Thêm các nút tạo mới -->
+<div class="button-container">
+    <a href="/sinh-vien/create">Tạo sinh viên mới</a>
+    <a href="/cong-viec/create">Thêm mới công việc</a>
+    <a href="/tot-nghiep/create">Thêm mới tốt nghiệp</a>
+</div>
 </body>
 </html>

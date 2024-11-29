@@ -1,16 +1,21 @@
-<div>
-    <h2>Thông Tin Sinh Viên</h2>
-    <p>CCCD: <span th:text="${sinhVien.soCMND}"></span></p>
-    <p>Họ tên: <span th:text="${sinhVien.hoTen}"></span></p>
-    <p>Email: <span th:text="${sinhVien.email}"></span></p>
-    <p>Số điện thoại: <span th:text="${sinhVien.soDT}"></span></p>
-    <p>Địa chỉ: <span th:text="${sinhVien.diaChi}"></span></p>
+<h2>Thông Tin Sinh Viên</h2>
+<p>CCCD: <span th:text="${sinhVien.soCMND}"></span></p>
+<p>Họ tên: <span th:text="${sinhVien.hoTen}"></span></p>
+<p>Email: <span th:text="${sinhVien.email}"></span></p>
+<p>Số điện thoại: <span th:text="${sinhVien.soDT}"></span></p>
+<p>Địa chỉ: <span th:text="${sinhVien.diaChi}"></span></p>
 
-    <h3>Thông Tin Tốt Nghiệp</h3>
-    <p>Năm tốt nghiệp: <span th:text="${sinhVien.getTotNghiep().getNgayTN()}"></span></p>
-    <p>Ngành học: <span th:text="${sinhVien.getTotNghiep().getNganh().gettenNganh()}"></span></p>
+<h3>Thông Tin Tốt Nghiệp</h3>
+<div th:each="totNghiep : ${sinhVien.totNghiepList}">
+    <p>Năm tốt nghiệp: <span th:text="${totNghiep.ngayTN}"></span></p>
+    <p>Ngành học: <span th:text="${totNghiep.maNganh}"></span></p>
+    <p>Trường: <span th:text="${totNghiep.maTruong}"></span></p>
+    <p>Hệ tốt nghiệp: <span th:text="${totNghiep.heTN}"></span></p>
+    <p>Loại tốt nghiệp: <span th:text="${totNghiep.loaiTN}"></span></p>
+</div>
 
-    <h3>Thông Tin Công Việc</h3>
-    <p>Công ty: <span th:text="${sinhVien.getCongViec().getTenCongTy()}"></span></p>
-    <p>Vị trí công việc: <span th:text="${sinhVien.getCongViec().getDiaChiCongTy()}"></span></p>
+<h3>Thông Tin Công Việc</h3>
+<div th:each="congViec : ${sinhVien.congViecList}">
+    <p>Công ty: <span th:text="${congViec.tenCongTy}"></span></p>
+    <p>Vị trí công việc: <span th:text="${congViec.diaChiCongTy}"></span></p>
 </div>

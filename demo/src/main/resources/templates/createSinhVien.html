@@ -1,10 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Form Sinh viên</title>
+    <style>
+        /* Cải tiến giao diện */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            margin-top: 30px;
+        }
+
+        .form-container label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+            color: #333;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-container input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        .form-container .required {
+            color: red;
+            font-size: 12px;
+            margin-top: -10px;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="form-container">
+    <h2>Form Thêm Sinh viên</h2>
+    <form th:action="@{/sinh-vien/save}" th:object="${sinhVien}" method="post">
+
+        <label for="soCMND">Số CMND:</label>
+        <input type="text" id="soCMND" th:field="*{soCMND}" required>
+        <div class="required">* Bắt buộc</div>
+
+        <label for="hoTen">Họ Tên:</label>
+        <input type="text" id="hoTen" th:field="*{hoTen}" required>
+        <div class="required">* Bắt buộc</div>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required>
+        <div class="required">* Bắt buộc</div>
+
+        <label for="soDT">Số Điện Thoại:</label>
+        <input type="text" id="soDT" th:field="*{soDT}" required>
+        <div class="required">* Bắt buộc</div>
+
+        <label for="diaChi">Địa Chỉ:</label>
+        <input type="text" id="diaChi" th:field="*{diaChi}" required>
+        <div class="required">* Bắt buộc</div>
+
+        <button type="submit">Lưu</button>
+    </form>
+</div>
 </body>
 </html>
+
+<!--    &lt;!&ndash; Thông tin tốt nghiệp &ndash;&gt;-->
+<!--    <h2>Thông Tin Tốt Nghiệp</h2>-->
+<!--    <label for="heTN">Hệ Tốt Nghiệp:</label>-->
+<!--    <input type="text" id="heTN" th:field="*{totNghiepList[0].heTN}" required><br>-->
+
+<!--    <label for="ngayTN">Ngày Tốt Nghiệp:</label>-->
+<!--    <input type="date" id="ngayTN" th:field="*{totNghiepList[0].ngayTN}" required><br>-->
+
+<!--    <label for="loaiTN">Loại Tốt Nghiệp:</label>-->
+<!--    <input type="text" id="loaiTN" th:field="*{totNghiepList[0].loaiTN}" required><br>-->
+
+<!--    <label for="maTruong">Mã Trường:</label>-->
+<!--    <input type="text" id="maTruong" th:field="*{totNghiepList[0].maTruong}" required><br>-->
+
+<!--    <label for="maNganh">Mã Ngành:</label>-->
+<!--    <input type="text" id="maNganh" th:field="*{totNghiepList[0].maNganh}" required><br>-->
+
+<!--    &lt;!&ndash; Thông tin công việc &ndash;&gt;-->
+<!--    <h2>Thông Tin Công Việc</h2>-->
+
+<!--    &lt;!&ndash; Tên công ty &ndash;&gt;-->
+<!--    <label for="tenCongTy">Tên Công Ty:</label>-->
+<!--    <input type="text" id="tenCongTy" th:field="*{congViecList[0].tenCongTy}" required><br>-->
+
+<!--    &lt;!&ndash; Ngày vào công ty &ndash;&gt;-->
+<!--    <label for="ngayVaoCongTy">Ngày vào công ty:</label>-->
+<!--    <input type="date" id="ngayVaoCongTy" th:field="*{congViecList[0].ngayVaoCongTy}" required><br>-->
+
+<!--    &lt;!&ndash; Tên công việc &ndash;&gt;-->
+<!--    <label for="tenCongViec">Tên công việc:</label>-->
+<!--    <input type="text" id="tenCongViec" th:field="*{congViecList[0].tenCongViec}" required><br>-->
+
+<!--    &lt;!&ndash; Địa chỉ công ty &ndash;&gt;-->
+<!--    <label for="diaChiCongTy">Địa chỉ công ty:</label>-->
+<!--    <textarea id="diaChiCongTy" th:field="*{congViecList[0].diaChiCongTy}" required></textarea><br>-->
+
+<!--    &lt;!&ndash; Thời gian làm việc &ndash;&gt;-->
+<!--    <label for="thoiGianLamViec">Thời gian làm việc:</label>-->
+<!--    <input type="date" id="thoiGianLamViec" th:field="*{congViecList[0].thoiGianLamViec}" required><br>-->
+
+<!--    &lt;!&ndash; Mã ngành (Nếu cần) &ndash;&gt;-->
+<!--    <label for="maNganh2">Mã Ngành:</label>-->
+<!--    <input type="text" id="maNganh2" th:field="*{congViecList[0].maNganh}" required>-->
+
+
+<!--    &lt;!&ndash; Nút thêm công việc &ndash;&gt;-->
+
+<!--    &lt;!&ndash; Nút lưu &ndash;&gt;-->
